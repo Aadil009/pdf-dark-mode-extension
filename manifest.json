@@ -1,0 +1,35 @@
+{
+    "manifest_version": 3,
+    "name": "Dark PDF Reader",
+    "version": "1.0",
+    "description": "Read local PDFs in dark theme.",
+    "permissions": [
+        "activeTab",
+        "scripting"
+    ],
+    "host_permissions": [
+        "file://*/*"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_icon": "./NightPdf.png",
+        "default_title": "Enable Dark Mode"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*/*",
+                "file://*/*.pdf"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "run_at": "document_end"
+        }
+    ],
+    "icons": {
+        "48": "./NightPdf.png"
+    }
+}
